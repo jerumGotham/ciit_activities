@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Asynchronous JavaScript</h3>
+    <button id="fetchDataBtn">Fetch Data</button>
+    <p id="status"></p>
+
+    <script>
+      async function runASynchronousTask() {
+        const statusField = document.getElementById("status");
+        console.log("Starting synchronous task...");
+
+        statusField.textContent = "Running asynchronous task...";
+        // Simulate a long-running task (e.g., fetching data)
+
+        await processData();
+
+        console.log("Asynchronous task completed!");
+        statusField.textContent = "Asynchronous task completed!";
+      }
+
+      document
+        .getElementById("fetchDataBtn")
+        .addEventListener("click", runASynchronousTask);
+
+      function processData() {
+        const promise = new Promise((resolve) => {
+          setTimeout(() => {
+            resolve("Data processed!");
+          }, 5000); // Simulate a 5-second delay
+        });
+        return promise;
+      }
+    </script>
+  </body>
+</html>

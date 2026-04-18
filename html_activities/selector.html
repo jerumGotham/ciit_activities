@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jerum Galang</title>
+    <!-- EXTERNAL STYLE SHEET -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- INTERNAL stylesheet -->
+    <style>
+      /* select all element */
+      * {
+        color: pink;
+      }
+
+      .container > div {
+        margin: 20px;
+        border: 2px solid purple;
+        padding: 10px;
+      }
+
+      /* group selector */
+      h1,
+      h2,
+      .class-1,
+      #hero-div-1 {
+        color: green;
+        font-weight: bold;
+      }
+      p {
+        color: purple;
+      }
+      a {
+        color: blue;
+      }
+
+      /* class selector */
+      .class-1 {
+        border: 2px solid red;
+      }
+
+      /* id selector */
+      #hero-div-1 {
+        background-color: aqua;
+      }
+
+      /* descendant selector */
+      #main-section p {
+        color: orange;
+      }
+
+      /* child selector */
+      #another-section > h3 {
+        color: green;
+        font-size: 15px;
+      }
+
+      /* nested child selector */
+      #another-section > div > div > h3 {
+        color: green;
+        font-size: 15px;
+      }
+
+      /* Adjacent sibling selector */
+      #another-section2-h4 + p {
+        color: red;
+        font-size: 20px;
+      }
+
+      /* General sibling selector */
+      #another-section3-h4 ~ p {
+        color: red;
+        font-size: 20px;
+      }
+
+      #another-section4 * {
+        display: block;
+      }
+
+      /* attribute selector equal*/
+      /* a[href="https://google.com"] {
+        border: 2px solid blue;
+      } */
+
+      /* attribute selector starts with*/
+      /* a[href^="https"] {
+        border: 2px solid blue;
+      } */
+
+      /* attribute selector ends with*/
+      /* a[href$="com"] {
+        border: 2px solid blue;
+      } */
+
+      /* attribute selector contains*/
+      #another-section4 a[href*="s://"] {
+        border: 2px solid blue;
+      }
+
+      #another-section4:hover {
+        background-color: lightblue;
+      }
+
+      /* pseudo-class selector */
+      #another-section5 a:hover {
+        font-size: 20px;
+        font-weight: bold;
+        color: #620303;
+      }
+
+      #another-section5 button {
+        background-color: lightgray;
+        color: black;
+      }
+      #another-section5 button:hover {
+        background-color: yellow;
+      }
+
+      #another-section5 button:active {
+        background-color: red;
+      }
+
+      /* child selector with pseudo-class */
+      #another-section6 div:first-child {
+        background-color: lightgreen;
+      }
+
+      #another-section6 div:last-child {
+        background-color: lightgreen;
+      }
+
+      #another-section6 div:nth-child(2) {
+        background-color: lightgreen;
+      }
+
+      /* pseudo-element selector */
+      p::before {
+        content: "Before -";
+        color: red;
+      }
+      p::after {
+        content: "- After";
+        color: green;
+      }
+      p::first-letter {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      p::first-line {
+        font-size: 20px;
+        font-weight: bold;
+        color: blue;
+      }
+      input::placeholder {
+        color: red;
+        font-style: italic;
+      }
+
+      #another-section8 li:nth-of-type(2) {
+        background-color: lightgray;
+      }
+
+      #another-section8 li:nth-child(2) {
+        background-color: lightgray;
+      }
+
+      #another-section8 div:empty {
+        display: none;
+      }
+
+      #another-section8 input:checked + label {
+        color: green;
+        font-weight: bold;
+      }
+
+      #another-section8 input:checked {
+        background-color: green;
+      }
+
+      #another-section8 button:disabled {
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- MAIN -->
+    <main class="container">
+      <div id="main-section">
+        <p>This is a paragraph inside the main section.</p>
+        <div>
+          <h2>This is a heading inside a div.</h2>
+          <p>This is a paragraph inside the div.</p>
+          <div>
+            <a href="#">This is a link inside another div.</a>
+            <p>This is a paragraph inside the innermost div.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="another-section">
+        <h3>1Another Section</h3>
+        <p>This is a paragraph in another section.</p>
+        <a href="#">This is another link.</a>
+        <div>
+          <h3>2This is another h3</h3>
+          <div>
+            <p>This is a paragraph inside a nested div.</p>
+            <h3>3This is a nested h3</h3>
+          </div>
+        </div>
+        <h3>4This is yet another h3</h3>
+        <h4>This is h4 here</h4>
+      </div>
+
+      <div id="another-section2">
+        <h4 id="another-section2-h4">This is h4</h4>
+        <p>This is a paragraph in another section 2.</p>
+        <a href="#">This is another link 2.</a>
+        <p>This is another paragraph in another section 2.</p>
+      </div>
+
+      <div id="another-section3">
+        <h4 id="another-section3-h4">This is h4</h4>
+        <p>This is a paragraph in another section 2.</p>
+        <a href="#">This is another link 2.</a>
+        <p>This is another paragraph in another section 2.</p>
+      </div>
+
+      <div id="another-section4">
+        <input type="text" placeholder="This is an input field." />
+        <input type="radio" placeholder="This is an input field." />
+        <input type="checkbox" placeholder="This is an input field." />
+        <a href="https://google.com">This is another link 3.</a>
+        <a href="https://facebook.com">This is another link 4.</a>
+        <a href="http://x">This is another link 5.</a>
+      </div>
+
+      <div id="another-section5">
+        <div>
+          <a href="https://google.com">This is another link 3.</a>
+        </div>
+        <div>
+          <a href="https://facebook.com">This is another link 4.</a>
+        </div>
+        <div>
+          <a href="http://x">This is another link 5.</a>
+        </div>
+        <div>
+          <button>This is a button inside a div.</button>
+        </div>
+      </div>
+
+      <div id="another-section6">
+        <div>
+          <a href="https://google.com">This is another link 3.</a>
+        </div>
+        <div>
+          <a href="https://facebook.com">This is another link 4.</a>
+        </div>
+        <div>
+          <a href="http://x">This is another link 5.</a>
+        </div>
+        <div>
+          <button>This is a button inside a div.</button>
+        </div>
+      </div>
+
+      <div id="another-section7">
+        <p>
+          This is p tag first line <br />
+          This is second line
+        </p>
+        <p>This is another p tag</p>
+        <div>
+          <input
+            type="text"
+            name="username"
+            placeholder="Please input username"
+          />
+        </div>
+      </div>
+
+      <div id="another-section8">
+        <ul class="menu">
+          <li class="active"><a href="https://example.com">Item 1</a></li>
+          <li class="default">Item 2</li>
+          <li class="default">Item 3</li>
+        </ul>
+
+        <div>
+          <div>The div has content</div>
+          <div></div>
+          <div>The div has content 2</div>
+        </div>
+
+        <input type="checkbox" name="checkbox1" id="checkbox1" />
+        <label for="checkbox1">This is a checkbox</label>
+
+        <div>
+          <label for="studentId">Student ID:</label>
+          <input type="text" name="studentId" id="studentId" disabled />
+        </div>
+
+        <div>
+          <label for="studentName">Student Name:</label>
+          <input type="text" name="studentName" id="studentName" />
+        </div>
+        <div>
+          <button>Enabled button</button>
+          <button disabled>Disabled button</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

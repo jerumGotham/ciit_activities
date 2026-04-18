@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      id="box"
+      style="width: 200px; height: 200px; background-color: lightblue"
+    >
+      Click me!
+    </div>
+
+    <div>
+      <form>
+        <div>
+          <label for="email">Email:</label>
+          <input type="text" id="email" placeholder="Type something..." />
+          <p id="errorEmail"></p>
+        </div>
+        <div>
+          <label for="age">Age:</label>
+          <input type="text" id="age" placeholder="Type something..." />
+          <p id="errorAge"></p>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      //   const box = document.getElementById("box");
+      //   box.addEventListener("mouseover", function () {
+      //     alert("Box hovered!");
+      //   });
+
+      //   window.addEventListener("resize", function () {
+      //     console.log("Window resized!");
+      //   });
+
+      const emailField = document.getElementById("email");
+      const errorEmail = document.getElementById("errorEmail");
+
+      emailField.addEventListener("change", function (event) {
+        const emailValue = event.target.value;
+        console.log(emailValue);
+
+        if (emailValue.includes("@")) {
+          errorEmail.textContent = "";
+          emailField.style.borderColor = "green";
+        } else {
+          errorEmail.textContent = "Please enter a valid email address.";
+          errorEmail.style.color = "red";
+          emailField.style.borderColor = "red";
+        }
+      });
+
+      const ageField = document.getElementById("age");
+
+      ageField.addEventListener("keydown", dontAllowNumbers);
+
+      function dontAllowNumbers(event) {
+        const key = event.key;
+        if (!/\d/.test(key)) {
+          event.preventDefault();
+        }
+      }
+    </script>
+  </body>
+</html>

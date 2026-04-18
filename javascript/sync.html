@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Synchronous JavaScript</h3>
+    <button id="fetchDataBtn">Fetch Data</button>
+    <p id="status"></p>
+
+    <script>
+      function runSynchronousTask() {
+        const statusField = document.getElementById("status");
+        console.log("Starting synchronous task...");
+
+        statusField.textContent = "Running synchronous task...";
+        // Simulate a long-running task (e.g., fetching data)
+
+        const startTime = Date.now();
+        while (Date.now() - startTime < 5000) {
+          // Busy-wait for 5 seconds
+        }
+
+        console.log("Synchronous task completed!");
+        statusField.textContent = "Synchronous task completed!";
+      }
+
+      document
+        .getElementById("fetchDataBtn")
+        .addEventListener("click", runSynchronousTask);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Bootstrap 5.0.2 CDN links -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Icons CDN link -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Boottrap 5.0.2 JavaScript Bundle CDN link (includes Popper.js) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 id="headerTitle">Phone Shop</h1>
+
+      <div class="row">
+        <!-- FOR PRODUCT LIST -->
+        <div class="col-7">
+          <h6>Sort By</h6>
+          <select id="dropDownSort" class="form-select w-25 mb-4">
+            <option value="name">Name</option>
+            <option value="age">Age</option>
+            <option value="grade">Grade</option>
+          </select>
+          <div class="row" id="productList"></div>
+        </div>
+
+        <!-- CART DETAILS -->
+        <div class="col-5">
+          <div class="card c1">
+            <div class="card-header">Cart Details</div>
+            <div class="card-body">
+              <h1>Cart</h1>
+              <ul class="list-group" id="cartList">
+                <!-- CART ITEMS WILL BE ADDED HERE -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      // const myPromise = new Promise((resolve, reject) => {
+      //   // Simulate an asynchronous operation (e.g., fetching data from an API)
+      //   setTimeout(() => {
+      //     const success = false; // Change this to false to simulate an error
+      //     if (success) {
+      //       resolve("Data fetched successfully!");
+      //     } else {
+      //       reject("Error fetching data.");
+      //     }
+      //   }, 2000);
+      // });
+
+      // myPromise
+      //   .then((message) => {
+      //     console.log(message); // Output: Data fetched successfully!
+      //   })
+      //   .catch((error) => {
+      //     console.error(error); // Output: Error fetching data.
+      //   });
+
+      async function fetchData() {
+        try {
+          const response = await fetch(
+            "https://dummyjson.com/products/search?q=phone",
+          );
+          const data = await response.json();
+          console.log("From Async Data:", data);
+          processJsonData(data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+
+      // let studentObject = {
+      //   name: "John Doe",
+      //   age: 20,
+      //   grade: "A",
+      //   sayHi: function () {
+      //     console.log(
+      //       "Hi, I'm " +
+      //         this.age +
+      //         " " +
+      //         this.name +
+      //         " and my favorite hobby is " +
+      //         this.details.hobbies[0],
+      //     );
+      //   },
+      //   "IS Passed": true,
+      //   details: {
+      //     hobbies: ["reading", "sports", "music"],
+      //     isEmployed: false,
+      //     exes: [
+      //       {
+      //         name: "Jane Smith",
+      //         relationship: "ex-girlfriend",
+      //       },
+      //       {
+      //         name: "Emily Johnson",
+      //         relationship: "ex-girlfriend",
+      //       },
+      //     ],
+      //   },
+      //   address: {
+      //     city: "New York",
+      //     country: "USA",
+      //     zipCode: {
+      //       code: "10001",
+      //       area: "Manhattan",
+      //     },
+      //   },
+      // };
+      // studentObject.sayHi();
+      // console.log(studentObject.details.exes[0].name);
+
+      // //ACCESSING OBJECT PROPERTIES
+      // studentObject.name; //dot notation
+      // studentObject["name"]; //bracket notation
+
+      // studentObject["IS Passed"]; //accessing property with space in its name using bracket notation
+
+      // //sort by -> name, age, grade,
+      // let sortValueChoosenByTheUser =
+      //   document.getElementById("dropDownSort").value;
+      // //if the property name is stored in a variable, we can use bracket notation to access the property value
+      // //let sortValueChoosenByTheUser = sortBy;
+      // studentObject[sortValueChoosenByTheUser]; //access the age property value using the variable
+
+      // console.log(studentObject[sortValueChoosenByTheUser]);
+
+      // //studentObject.address = "123 Main St"; //add new property to the object
+
+      // studentObject.age = 35; //update the age property value
+
+      // delete studentObject.age; //delete the grade property from the object
+
+      // //console.log(studentObject);
+
+      // console.log(studentObject.address.city);
+
+      // console.log(studentObject.address.zipCode.area);
+
+      //data from the server (array of products objects)
+      //   let products = [
+      //     {
+      //       id: 1,
+      //       name: "Apple",
+      //       price: 10.0,
+      //       image: "https://placehold.co/600x400?text=Apple",
+      //     },
+
+      //     {
+      //       id: 2,
+      //       name: "Banana",
+      //       price: 5.0,
+      //       image: "https://placehold.co/600x400?text=Banana",
+      //     },
+
+      //     {
+      //       id: 3,
+      //       name: "Orange",
+      //       price: 8.0,
+      //       image: "https://placehold.co/600x400?text=Orange",
+      //     },
+
+      //     {
+      //       id: 4,
+      //       name: "Grapes",
+      //       price: 12.0,
+      //       image: "https://placehold.co/600x400?text=Grapes",
+      //     },
+      //   ];
+      let products = [];
+      let cart = [];
+
+      let headerTitle = document.getElementById("headerTitle");
+      headerTitle.style.color = "red";
+      headerTitle.style.fontSize = "50px";
+      headerTitle.innerText = "Ecommerce Shop";
+
+      //$("#headerTitle").css("color", "red");
+      //$("#headerTitle").css("font-size", "150px");
+
+      //load products from the backend
+      // function loadProductsFromBackend() {
+      //   fetch("https://dummyjson.com/products/search?q=phone")
+      //     .then((res) => res.json())
+      //     .then((data) => processJsonData(data));
+      // }
+
+      //process data from the backend
+      function processJsonData(jsonData) {
+        console.log(jsonData);
+        //si jsonData is object
+        //access the products array from the jsonData object and store it in a variable
+        let productsArray = jsonData["products"];
+        products = productsArray;
+        //call the function to display the product list and pass the products array as an argument
+        displayProductList(productsArray);
+      }
+
+      function displayProductList(productsArray) {
+        //get the product list element
+        let productList = document.getElementById("productList");
+        let sum = 0;
+        //loop the products array and create the product cards
+        for (let i = 0; i < productsArray.length; i++) {
+          //productsArray[i] access the current product object in the loop
+          // p is a variable that holds the current product object in the loop
+          let pObject = productsArray[i];
+
+          productList.innerHTML += `
+          <div class="col-3 mb-4">
+            <div class="card">
+                    <div class="card-header text-center">${pObject.brand}</div>
+                    <img src="${pObject.thumbnail}" class="card-img-top" alt="${pObject.title}">
+                    <div class="card-body">
+                    <p class="text-center">${pObject.title}</p>
+                    <p class="text-center text-danger">Price: $${pObject.price}</p>
+
+                    <div class="d-grid">
+                        <button class="btn btn-secondary" onclick="addToCart('${pObject.id}')"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+                    </div>
+                    </div>
+            </div>
+           </div> `;
+        }
+      }
+
+      //function to add product to cart
+      function addToCart(productId) {
+        //add the product to the cart
+        let productObject = findProductById(productId);
+
+        let found = false;
+
+        //check if the product is already in the cart
+        for (let i = 0; i < cart.length; i++) {
+          if (Number(cart[i].id) === Number(productId)) {
+            cart[i].quantity += 1;
+            found = true;
+            break;
+          }
+        }
+
+        if (!found) {
+          let productObjectNaIlalagaySaCart = {
+            id: productObject.id,
+            title: productObject.title,
+            price: productObject.price,
+            quantity: 1,
+          };
+          cart.push(productObjectNaIlalagaySaCart);
+        }
+
+        //create Element for display
+        let cartList = document.getElementById("cartList");
+
+        cartList.innerHTML = ""; //clear the cart list before displaying the updated cart
+
+        for (let i = 0; cart.length > i; i++) {
+          let pObj = cart[i];
+
+          let li = document.createElement("li");
+          li.classList.add(
+            "list-group-item",
+            "d-flex",
+            "justify-content-around",
+            "align-items-center",
+            "gap-3",
+          );
+
+          li.innerHTML = `
+          <div>${pObj.title}</div>
+          <span class="badge bg-primary rounded-pill">$${pObj.price}</span>
+          <input type="number" value="${pObj.quantity}" min="1" class="form-control w-25 d-inline-block">
+          <span class="badge bg-secondary rounded-pill">Total: $${(pObj.price * pObj.quantity).toFixed(2)}</span>
+          <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+        `;
+
+          cartList.appendChild(li);
+        }
+
+        // if (productObject != null) {
+        //   cartList.innerHTML += `
+        //     <li class="list-group-item d-flex justify-content-between align-items-center">
+        //         ${productObject.title}
+        //         <span class="badge bg-primary rounded-pill">$${productObject.price}</span>
+        //     </li>
+        //     `;
+        // } else {
+        //   alert("Product not found!");
+        // }
+      }
+
+      function findProductById(productId) {
+        //loop the products array and find the product with the matching id
+        for (let i = 0; i < products.length; i++) {
+          if (Number(productId) === Number(products[i].id)) {
+            console.log("Product found: " + products[i].title);
+            return products[i];
+          }
+        }
+        return null;
+      }
+
+      //START APP
+      //loadProductsFromBackend();
+      fetchData();
+
+      //call the function to display the product list
+      //displayProductList(products);
+    </script>
+  </body>
+</html>

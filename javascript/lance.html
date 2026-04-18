@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Bootstrap 5.0.2 CDN links -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Icons CDN link -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Boottrap 5.0.2 JavaScript Bundle CDN link (includes Popper.js) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1>Phone Shop</h1>
+
+      <div class="row">
+        <!-- FOR PRODUCT LIST -->
+        <div class="col-8">
+          <div class="row" id="productList"></div>
+        </div>
+
+        <!-- CART DETAILS -->
+        <div class="col-4">
+          <div class="card">
+            <div class="card-header">Cart Details</div>
+            <div class="card-body">
+              <h1>Cart</h1>
+              <ul class="list-group" id="cartList">
+                <!-- CART ITEMS WILL BE ADDED HERE -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      //data from the server (array of products objects)
+      //   let products = [
+      //     {
+      //       id: 1,
+      //       name: "Apple",
+      //       price: 10.0,
+      //       image: "https://placehold.co/600x400?text=Apple",
+      //     },
+
+      //     {
+      //       id: 2,
+      //       name: "Banana",
+      //       price: 5.0,
+      //       image: "https://placehold.co/600x400?text=Banana",
+      //     },
+
+      //     {
+      //       id: 3,
+      //       name: "Orange",
+      //       price: 8.0,
+      //       image: "https://placehold.co/600x400?text=Orange",
+      //     },
+
+      //     {
+      //       id: 4,
+      //       name: "Grapes",
+      //       price: 12.0,
+      //       image: "https://placehold.co/600x400?text=Grapes",
+      //     },
+      //   ];
+      let products = [];
+      let age = [];
+
+      //load products from the backend
+      function loadProductsFromBackend() {
+        fetch("https://dummyjson.com/products/search?q=phone")
+          .then((res) => res.json())
+          .then((data) => processJsonData(data));
+      }
+
+      //process data from the backend
+      function processJsonData(jsonData) {
+        console.log(jsonData);
+        //si jsonData is object
+        //access the products array from the jsonData object and store it in a variable
+        let productsArray = jsonData.products;
+        products = productsArray;
+        //call the function to display the product list and pass the products array as an argument
+        displayProductList(productsArray);
+      }
+
+      function displayProductList(productsArray) {
+        //get the product list element
+        let productList = document.getElementById("productList");
+
+        //loop the products array and create the product cards
+        for (let i = 0; i < productsArray.length; i++) {
+          //productsArray[i] access the current product object in the loop
+          // p is a variable that holds the current product object in the loop
+          let p = productsArray[i];
+
+          productList.innerHTML += `
+          <div class="col-3 mb-4">
+            <div class="card">
+                    <div class="card-header text-center">${p.brand}</div>
+                    <img src="${p.thumbnail}" class="card-img-top" alt="${p.name}">
+                    <div class="card-body">
+                    <p class="text-center">${p.title}</p>
+                    <p class="text-center text-danger">Price: $${p.price}</p>
+ 
+                    <div class="d-grid">
+                        <button class="btn btn-secondary" onclick="addToCart('${p.id}')"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+                    </div>
+                    </div>
+                     <button class="btn btn-secondary" onclick="removeFromCart('${p.title}')"><i class="bi bi-cart-plus"></i>Remove</button>
+            </div>
+           </div> `;
+        }
+      }
+
+      function addToCart(productId) {
+        //add the product to the cart
+        let cartList = document.getElementById("cartList");
+
+        console.log(productId + " added to cart");
+        let productObject = findProductById(productId);
+
+        let cart = [];
+
+        function addToCart(name, price) {
+          const item = cart.find((product) => product.name === name);
+          if (item) {
+            item.quantity++;
+          } else {
+            cart.push({ name, price, quantity: 1 });
+          }
+          updateCart();
+        }
+
+        function removeFromCart(name) {
+          cart = cart.filter((product) => product.name !== name);
+          updateCart();
+        }
+
+        function updateCart() {
+          const cartItems = document.getElementById("cart-items");
+          const cartTotal = document.getElementById("cart-total");
+          cartItems.innerHTML = ""; // Clear current display
+          let total = 0;
+
+          cart.forEach((product) => {
+            const li = document.createElement("li");
+            li.textContent = `${product.name} - $${product.price} x ${product.quantity}`;
+
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.onclick = () => removeFromCart(product.name); // Add remove functionality
+
+            li.appendChild(removeButton);
+            cartItems.appendChild(li);
+            total += product.price * product.quantity;
+          });
+
+          cartTotal.textContent = total;
+        }
+
+        if (productObject != null) {
+          cartList.innerHTML += `
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                ${productObject.title}
+                <span class="badge bg-primary rounded-pill">$${productObject.price}</span>
+            </li>
+            `;
+        } else {
+          alert("Product not found!");
+        }
+      }
+
+      function findProductById(productId) {
+        //loop the products array and find the product with the matching id
+        for (let i = 0; i < products.length; i++) {
+          if (Number(productId) === Number(products[i].id)) {
+            console.log("Product found: " + products[i].title);
+            return products[i];
+          }
+        }
+        return null;
+      }
+
+      //START APP
+      loadProductsFromBackend();
+      //call the function to display the product list
+      //displayProductList(products);
+    </script>
+  </body>
+</html>

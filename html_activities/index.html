@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jerum Galang</title>
+    <!-- EXTERNAL STYLE SHEET -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- INTERNAL stylesheet -->
+    <style>
+      * {
+        color: pink;
+      }
+      h1,
+      h2,
+      .class-1,
+      #hero-div-1 {
+        color: green;
+        border: 2px solid black;
+        font-weight: bold;
+      }
+      p {
+        color: purple;
+      }
+      a {
+        color: blue;
+      }
+
+      .class-1 {
+        border: 2px solid red;
+      }
+
+      .table-transparent {
+        --bs-table-bg: transparent !important;
+      }
+
+      #hero-div-1 {
+        background-color: aqua;
+      }
+
+      .css-13cymwt-control > div > div {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- INLINE STYLE -->
+      <h1>Welcome to My Portfolio</h1>
+
+      <label for="exampleDataList" class="form-label">Datalist example</label>
+      <input
+        class="form-control"
+        list="datalistOptions"
+        id="exampleDataList"
+        placeholder="Type to search..."
+      />
+      <datalist id="datalistOptions">
+        <option value="San Francisco"></option>
+        <option value="New York"></option>
+        <option value="Seattle"></option>
+        <option value="Los Angeles"></option>
+        <option value="Chicago"></option>
+      </datalist>
+
+      <!-- NAVIGATION -->
+      <nav
+        class="navbar navbar-expand-lg bg-body-tertiary"
+        style="background-color: aqua !important"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul
+              class="navbar-nav me-auto mb-2 mb-lg-0 nav-item class-1 class-2 class-3"
+            >
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ABOUT</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <nav>
+        <ul id="main-nav" class="class-1">
+          <li><a href=""> HOME </a></li>
+          <li><a href="">ABOUT</a></li>
+          <li><a href="projects.html">PROJECTS</a></li>
+          <li><a href="">CONTACT</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container">
+      <!-- HERO -->
+      <section id="hero">
+        <h2 style="font-size: 50px">Hero Section</h2>
+
+        <!-- HERO IMAGES -->
+        <div>
+          <img
+            src="images/image1.jpeg"
+            alt="Image 1"
+            width="500"
+            height="500"
+            class="hero-image"
+          />
+          <img
+            src="images/image2.jpeg"
+            alt="Image 2"
+            width="500"
+            height="500"
+            class="hero-image"
+          />
+          <img
+            src="images/image3.jpeg"
+            alt="Image 3"
+            width="500"
+            height="500"
+            class="hero-image"
+          />
+          <img
+            src="images/image4.jpg"
+            alt="Image 4"
+            width="500"
+            height="500"
+            class="hero-image"
+            id="hero-last-image"
+          />
+        </div>
+        <div class="container text-center">
+          <div class="row align-items-start">
+            <div class="col d-sm-none d-lg-block" id="hero-div-1">1</div>
+            <div class="col text-success">2</div>
+            <div class="col text-danger">3</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <h2>About Me</h2>
+
+        <!-- DETAILS -->
+        <div>
+          <p>
+            Hello, I'm Jerum Galang. I am a passionate web developer with a love
+            for creating beautiful and functional websites.
+          </p>
+          <h3>My Skills:</h3>
+          <ol>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Node.js</li>
+          </ol>
+        </div>
+
+        <!-- INFO -->
+        <div>
+          <table border="1">
+            <caption>
+              Character Reference
+            </caption>
+            <thead>
+              <th>Name</th>
+              <th>Relationship</th>
+              <th>Address</th>
+              <th>Contact Number</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lance Tan</td>
+                <td>Student</td>
+                <td>Makati City</td>
+                <td>09123456789</td>
+              </tr>
+              <tr>
+                <td>Joy Pengson</td>
+                <td>Student</td>
+                <td>Quezon City</td>
+                <td>09123456781</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-primary table-transparent">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>John</td>
+                <td>Doe</td>
+                <td>@social</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects-section">
+        <h2 id="h2-project">My Projects</h2>
+
+        <!-- GROUP 1 -->
+        <div>
+          <div>
+            <h3>Project 1: My Portfolio</h3>
+            <p>
+              A personal website to showcase my <strong>SKILLS</strong> and
+              <strong>PROJECTS</strong>.
+            </p>
+          </div>
+
+          <div>
+            <h3>Project 2: To Do List</h3>
+            <p>
+              A simple to-do list application to help users manage their tasks
+              efficiently.
+            </p>
+          </div>
+          <div>
+            <div>
+              <img
+                src="images/image1.jpeg"
+                alt="Image 1"
+                width="500"
+                height="500"
+              />
+              <img
+                src="images/image2.jpeg"
+                alt="Image 2"
+                width="500"
+                height="500"
+              />
+              <img
+                src="images/image3.jpeg"
+                alt="Image 3"
+                width="500"
+                height="500"
+              />
+              <img
+                src="images/image4.jpg"
+                alt="Image 4"
+                width="500"
+                height="500"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section>
+        <h2>Contact Me</h2>
+
+        <!-- FORM -->
+        <form>
+          <fieldset>
+            <legend>Message</legend>
+            <div>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" />
+            </div>
+            <br />
+            <div>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" />
+            </div>
+            <br />
+            <div>
+              <label for="message">Message:</label>
+              <textarea type="text" id="message" name="message"></textarea>
+            </div>
+          </fieldset>
+
+          <br />
+          <button type="reset">Reset</button>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Subscribe</h2>
+        <span class="subscribe-span"
+          >Subscribe to our newsletter for updates.</span
+        >
+        <span class="subscribe-span">Get exclusive content and offers.</span>
+
+        <div>
+          <div class="box" id="box-1">1</div>
+
+          <div class="box" id="box-2">2</div>
+
+          <div class="box" id="box-3">3</div>
+        </div>
+
+        <div id="subscribe-box-2">
+          <div class="box2">1</div>
+
+          <div class="box2">2</div>
+
+          <div class="box2">3</div>
+        </div>
+
+        <div>
+          <label for="subscribe-email">Email:</label>
+          <input type="email" id="subscribe-email" name="subscribe-email" />
+          <button type="submit">Subscribe</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; Copyright 2026. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

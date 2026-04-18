@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      nav {
+        background-color: antiquewhite;
+        padding: 20px;
+      }
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .hamburger {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      #menu {
+        display: flex;
+        list-style: none;
+      }
+      #menu li a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+      }
+      #menu li a:hover {
+        background-color: lightgray;
+      }
+
+      /* MOBILE STYLES */
+      @media (max-width: 500px) {
+        .hamburger {
+          display: block;
+        }
+        #menu {
+          display: none;
+        }
+      }
+
+      /* FOR TABLET */
+      @media (min-width: 501px) and (max-width: 768px) {
+        .hamburger {
+          display: block;
+          font-size: 40px;
+          color: blue;
+        }
+        #menu {
+          display: none;
+        }
+      }
+
+      /* FOR LAPTOP */
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .hamburger {
+          display: none;
+        }
+        #menu {
+          display: flex;
+        }
+      }
+
+      /* FOR DESKTOP */
+      @media (min-width: 1025px) {
+        .hamburger {
+          display: none;
+        }
+        #menu {
+          display: flex;
+        }
+      }
+
+      .box {
+        background-color: lightblue;
+        padding: 20px;
+        margin: 10px;
+        border: 1px solid black;
+        width: 200px;
+      }
+      .static {
+        position: static;
+      }
+
+      .relative {
+        position: relative;
+        top: 10px;
+        left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="box">This is a box!</div> -->
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">My LOGO</div>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <ul id="menu">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Video</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Career</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div>
+      <h1>Welcome to My Website</h1>
+      <p>This is a responsive website example.</p>
+    </div>
+    <div id="container">
+      <div class="box static">Normal</div>
+      <div class="box relative">Box Relative</div>
+      <div class="box static">Normal</div>
+    </div>
+
+    <div>
+      <h1>Welcome to My Website</h1>
+      <p>This is a responsive website example.</p>
+    </div>
+    <div id="container">
+      <div class="box static">Normal</div>
+      <div class="box relative">Box Relative</div>
+      <div class="box static">Normal</div>
+    </div>
+
+    <div>
+      <h1>Welcome to My Website</h1>
+      <p>This is a responsive website example.</p>
+    </div>
+    <div id="container">
+      <div class="box static">Normal</div>
+      <div class="box relative">Box Relative</div>
+      <div class="box static">Normal</div>
+    </div>
+
+    <div>
+      <h1>Welcome to My Website</h1>
+      <p>This is a responsive website example.</p>
+    </div>
+    <div id="container">
+      <div class="box static">Normal</div>
+      <div class="box relative">Box Relative</div>
+      <div class="box static">Normal</div>
+    </div>
+    <div>
+      <h1>Welcome to My Website</h1>
+      <p>This is a responsive website example.</p>
+    </div>
+    <div id="container">
+      <div class="box static">Normal</div>
+      <div class="box relative">Box Relative</div>
+      <div class="box static">Normal</div>
+    </div>
+  </body>
+</html>

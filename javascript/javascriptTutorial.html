@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript Tutorial</title>
+
+    <!-- EXTERNAL JAVASCRIPT -->
+    <script src="js/external.js"></script>
+  </head>
+
+  <body>
+    <!-- INLINE JAVASCRIPT -->
+    <h1 id="applicationName"></h1>
+
+    <input type="text" id="inputField" placeholder="Type something..." />
+
+    <button onclick="showName()">Show the value of Input</button>
+
+    <input type="text" id="first" placeholder="Type something..." />
+    <input type="text" id="second" placeholder="Type something..." />
+    <input type="text" id="third" placeholder="Type something..." />
+    <input type="text" id="fourth" placeholder="Type something..." />
+    <button onclick="sumValues()">Sum</button>
+
+    <div id="displayInput"></div>
+
+    <button
+      onclick="
+        document.getElementById('applicationName').innerText = 'CIIT NEW VALUE'
+      "
+    >
+      Change H1 Value
+    </button>
+
+    <div id="displayErrorMessage"></div>
+    <input type="text" id="firstName" placeholder="Enter your firstname" />
+    <input type="text" id="lastName" placeholder="Enter your lastname" />
+    <input type="text" id="age" placeholder="Enter your age" />
+
+    <button onclick="showUserInfo()">Show User Info</button>
+
+    <!-- <p onclick="alert('Welcome to the Javascript Tutorial!')">
+      Welcome to the Javascript Tutorial!
+    </p> -->
+
+    <script>
+      function showUserInfo() {
+        let firstName = document.getElementById("firstName").value;
+        let lastName = document.getElementById("lastName").value;
+        let age = document.getElementById("age").value;
+
+        let userInfo = `Your name is ${firstName} ${lastName} and you are ${age} years old.`;
+        console.log(userInfo);
+
+        document.getElementById("displayInput").innerText = userInfo;
+      }
+
+      function sumValues() {
+        let firstValue = document.getElementById("first").value;
+        let secondValue = document.getElementById("second").value;
+        let thirdValue = document.getElementById("third").value;
+        let fourthValue = document.getElementById("fourth").value;
+
+        let sum =
+          Number(firstValue) +
+          Number(secondValue) +
+          Number(thirdValue) +
+          Number(fourthValue);
+        let result = `The sum of the values is : ${sum}`;
+        console.log(result);
+
+        document.getElementById("displayInput").innerText = result;
+      }
+      console.log(msg);
+
+      let name = "Jerum";
+
+      console.log(typeof name);
+
+      showName();
+
+      function showName() {
+        console.log("This is a function that shows the name variable.");
+        name = "show name function";
+        let inputValue = document.getElementById("inputField").value;
+        document.getElementById("displayInput").innerText = inputValue;
+
+        function nestedFunction() {
+          name = "nested function";
+          console.log("This is a nested function.");
+        }
+      }
+
+      // Internal JAVASCRIPT
+      console.log("Welcome to the Javascript Tutorial!");
+
+      let schoolName = "CIIT"; // this data is from the database
+
+      let camelCase = "This is Camel Case";
+      let PascalCase = "This is Pascal Case";
+      let UPPER_SNAKE_CASE = "This is Upper Snake Case";
+      let lower_snake_case = "This is Lower Snake Case";
+
+      const PI = 3.14;
+      const BIRTH_YEAR = 2000;
+
+      let schoolAgeGap = 12.123;
+      let city = "Manila";
+      let isStudent = true;
+      let x;
+      let blank = null;
+      name = "Change Value";
+      //let age = 20;
+      let isEnrolled = true;
+      //const PI = 3.14;
+
+      let firstName = 2;
+      let lastName = 3;
+      let middleName = "P";
+
+      let fullName = firstName + " " + middleName + ". " + lastName;
+      console.log(fullName);
+
+      let fullNameTemplate = `${firstName} ${middleName}. ${lastName}`;
+      console.log(fullNameTemplate);
+
+      document.getElementById("applicationName").innerText = schoolName;
+
+      var msg = "Hello, World!";
+
+      let firstGrade = 85;
+      let secondGrade = 90;
+      let thirdGrade = 92;
+      let fourthGrade = 95;
+
+      let sumGrades = firstGrade + secondGrade + thirdGrade + fourthGrade;
+      let differenceGrades = fourthGrade - thirdGrade;
+      let productGrades = firstGrade * secondGrade;
+      let quotientGrades = fourthGrade / secondGrade;
+
+      let average = sumGrades / 4;
+
+      sumGrades = sumGrades + 10; // sumGrades += 10;
+      sumGrades += 10; // sumGrades = sumGrades + 10;
+
+      sumGrades -= 5; // sumGrades = sumGrades - 5;
+      sumGrades *= 2; // sumGrades = sumGrades * 2;
+      sumGrades /= 2; // sumGrades = sumGrades / 2;
+      sumGrades %= 3; // sumGrades = sumGrades % 3;
+      sumGrades **= 2; // sumGrades = sumGrades ** 2;
+
+      console.log(`The sum of the grade is: ${sumGrades}`);
+      console.log(`The difference of the grade is: ${differenceGrades}`);
+      console.log(`The product of the grade is: ${productGrades}`);
+      console.log(`The quotient of the grade is: ${quotientGrades.toFixed(2)}`);
+
+      let isPassed = average >= 75;
+      let isFailed = average < 75;
+
+      console.log(`The average grade is: ${average}`);
+      console.log(`Passed: ${isPassed}`);
+      console.log(`Failed: ${isFailed}`);
+
+      let stocks = 11;
+      if (stocks >= 100) {
+        console.log("The stocks are full.");
+
+        if (stocks > 100) {
+          console.log("The stocks are overstocked.");
+
+          if (stocks > 150) {
+            console.log("The stocks are dangerously overstocked.");
+          }
+        } else {
+          console.log("The stocks are just right.");
+        }
+      } else if (stocks < 100 && stocks > 10) {
+        console.log("The stocks are running low.");
+      } else {
+        console.log("The stocks are out of stock.");
+      }
+
+      let username = "admIn";
+      let password = "passWord123";
+
+      if (username == "admin" && password == "password123") {
+        console.log("Login successful!");
+      } else {
+        console.log("Login failed!");
+      }
+
+      let age = 17;
+      let hasParent = true;
+
+      if (age >= 18 || hasParent) {
+        console.log("You can enter the club.");
+      } else {
+        console.log("You cannot enter the club.");
+      }
+
+      let passwordCorrect = true;
+      let attempts = 3;
+      let isAdmin = false;
+
+      let accessGranted = passwordCorrect
+        ? "Access granted."
+        : attempts === 3
+          ? "Access grated"
+          : "Access denied.";
+
+      if ((passwordCorrect && attempts < 3) || isAdmin) {
+        console.log("Access granted.");
+      } else {
+        console.log("Access denied.");
+      }
+
+      let hasApiKey = true;
+      let keyExpired = false;
+
+      console.log(hasApiKey && !keyExpired); // true
+
+      let count = 0;
+      count = count + 1;
+      count += 1; // count = count + 1;
+      count++; // count = count + 1;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+  </head>
+  <body>
+    <h3>jQuery Sample</h3>
+    <div id="parentFetchBtn">
+      <button id="fetchDataBtn">Fetch Data</button>
+      <p id="kapatid">kapatid here</p>
+    </div>
+    <p id="status" style="position: relative">Hello World!</p>
+
+    <button id="hideContentBtn">Hide Content</button>
+
+    <div id="content" style="border: 1px solid red">
+      <h2>Hello World</h2>
+      <p>This is a sample jQuery code.</p>
+      <p>Click the button to see jQuery in action!</p>
+    </div>
+
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <h2>Dynamic List</h2>
+    <button id="fetchlistBtn">Fetch List</button>
+
+    <ul id="itemList">
+      <p>Hello</p>
+    </ul>
+
+    <script>
+      $(function () {
+        $("#fetchlistBtn").on("click", function () {
+          $.ajax({
+            url: "https://dummyjson.com/users",
+            method: "GET",
+            success: function (response) {
+              const users = response.users;
+
+              // $("#itemList").empty();
+
+              // for(let i = 0; i < users.length; i++) {
+              //   $("#itemList").append(`<li>${users[i].firstName} ${users[i].lastName}</li>`);
+              // }
+
+              users.forEach((user) => {
+                $("#itemList").after(
+                  `<li>${user.firstName} - ${user.lastName}</li>`,
+                );
+              });
+            },
+          });
+        });
+
+        // $("#status").css({
+        //   color: "red",
+        //   fontSize: "20px",
+        //   fontWeight: "bold",
+        //   border: "1px solid black",
+        // });
+
+        $("#status").animate({
+          left: "250px",
+          opacity: "0.5",
+          height: "150px",
+          width: "150px",
+        });
+
+        // $("#fetchDataBtn").on("click", function () {
+        //   $("#status")
+        //     .text("Data fetched successfully!")
+        //     .css("color", "blue")
+        //     .animate({ fontSize: "20px" }, 1000);
+        // });
+        $("#parentFetchBtn").on("click", function () {
+          console.log($(this).children());
+        });
+
+        $(document).on("click", "#newButton", function () {
+          alert("New button clicked!");
+        });
+
+        $("#hideContentBtn").on("click", function () {
+          $(this).text(
+            $("#content").is(":visible") ? "Show Content" : "Hide Content",
+          );
+
+          $("#content").toggle(1000);
+        });
+
+        $("#content").css("background-color", "yellow");
+
+        $("form").on("submit", function (e) {
+          e.preventDefault();
+
+          $("#name").remove();
+          // if ($("#name").val() === "") {
+          //   alert("Please enter your name.");
+          // } else {
+          //   $(this).submit();
+          // }
+        });
+      });
+    </script>
+  </body>
+</html>
